@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl_PL">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ciphers</title>
+    <script type="text/JavaScript" src="./ciphers.js"></script>
+</head>
+
+<body>
+    Szyfr:<br>
+    <select id="cipher">
+        <option value="caesar">Cezara</option>
+        <option value="affine">Afiniczny</option>
+        <option value="vigenere">Vigenère’a</option>
+    </select>
+    <div class="caesar" style="display: block">
+        Przesunięcie:<br>
+        <input class="caesar" type="number" min="0" max="25" value="3">
+    </div>
+    <div class="affine" style="display: none">
+        Klucz:<br> a=
+        <select class="affine" id="a">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="9">9</option>
+            <option value="11">11</option>
+            <option value="15">15</option>
+            <option value="17">17</option>
+            <option value="19">19</option>
+            <option value="21">21</option>
+            <option value="23">23</option>
+            <option value="25">25</option>
+        </select><br>b=
+        <input class="affine" id="b" type="number" value="0">
+    </div>
+    <div class="vigenere" style="display: none">
+        Słowo kluczowe:<br>
+        <input class="vigenere" value="klucz">
+    </div>
+    Tekst:<br>
+    <textarea id="inputText" rows="5" cols="100"></textarea><br>
+    <button id="encrypt" type="button">szyfrowanie</button>
+    <button id="decrypt" type="button">deszyfrowanie</button>
+    <hr>
+    <output></output>
+</body>
+
+</html>
