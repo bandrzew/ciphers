@@ -41,7 +41,11 @@ var affineCode = function (inputText, a, b) {
         if (element == ' ') {
             result += element;
         } else {
-            result += alphabet[(a * alphabet.indexOf(element) + b) % 26];
+            var index = (a * alphabet.indexOf(element) + b) % 26;
+            if (index < 0) {
+                index += 26;
+            }
+            result += alphabet[index];
         }
     });
     return result;

@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var cipher = "caesar";
+    var select = document.getElementById("cipher");
+    var divs = document.querySelectorAll("div");
+    var cipher = "";
 
-    document.getElementById("cipher").onchange = function () {
-        document.querySelectorAll("div").forEach(element => {
+    var toggleDivs = function () {
+        divs.forEach(element => {
             element.style.display = "none";
         });
 
-        cipher = this.value;
+        cipher = select.value;
         document.querySelector("div." + cipher).style.display = "block";
     }
+
+    toggleDivs();
+
+    select.onchange = toggleDivs;
 
     var caesarShift = document.querySelector("input.caesar");
     var affineKeyA = document.getElementById("a");
