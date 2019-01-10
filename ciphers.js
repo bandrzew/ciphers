@@ -41,9 +41,9 @@ var affineCode = function (inputText, a, b) {
         if (element == ' ') {
             result += element;
         } else {
-            var index = (a * alphabet.indexOf(element) + b) % 26;
+            var index = (a * alphabet.indexOf(element) + b) % alphabet.length;
             if (index < 0) {
-                index += 26;
+                index += alphabet.length;
             }
             result += alphabet[index];
         }
@@ -53,8 +53,8 @@ var affineCode = function (inputText, a, b) {
 
 var affineDecode = function (inputText, a, b) {
     var result = '';
-    for (var i = 1; i < 26; i++) {
-        if (a * i % 26 == 1) { //modular multiplicative inverse
+    for (var i = 1; i < alphabet.length; i++) {
+        if (a * i % alphabet.length == 1) { //modular multiplicative inverse
             a = i;
             break;
         }
@@ -64,7 +64,7 @@ var affineDecode = function (inputText, a, b) {
         if (element == ' ') {
             result += element;
         } else {
-            result += alphabet[a * (alphabet.indexOf(element) - b) % 26];
+            result += alphabet[a * (alphabet.indexOf(element) - b) % alphabet.length];
         }
     });
     return result;
@@ -101,7 +101,7 @@ var vigenereCode = function (inputText, keyWord) {
 var vigenereDecode = function (inputText, keyWord) {
     var invertedKeyWord = '';
     keyWord.split('').forEach(element => {
-        invertedKeyWord += alphabet[(26 - alphabet.indexOf(element)) % 26];
+        invertedKeyWord += alphabet[(alphabet.length - alphabet.indexOf(element)) % alphabet.length];
     });
     return vigenereCode(inputText, invertedKeyWord);
 }
